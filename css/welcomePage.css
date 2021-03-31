@@ -1,0 +1,117 @@
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    align-content: center;
+}
+
+header {
+    background-color: #FFA451;
+    clip-path: ellipse(48% 80% at 35% 7%);
+}
+
+main{
+    width: 90%;
+    text-align: center;
+    margin: auto;
+    
+}
+
+#background_img {
+    margin: 0 0 0 0;
+    background-image: url("../images/background_header.jpg");
+    /* background-color:coral; */
+    background-repeat: no-repeat;
+    background-size: cover;
+    clip-path: ellipse(48% 85% at 32% 6%);
+    transform: translateY(-10%);
+    background-position-y: 45%;
+    height: 60vh;
+}
+
+
+
+#welcomePage_content {
+
+    width: 60%;
+    margin: auto;
+    border: .1rem solid #cabeb2;
+    border-radius: 5%;
+    text-align: center;
+   
+    display: block;
+}
+
+input[type=text],
+input[type=number] {
+    font-family: 'Roboto', sans-serif;
+    font-size: 80%;
+    width: 60%;
+    padding: 10px 10px;
+    margin: 8px 0;
+    border: 1px solid #F27808;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+button {
+
+    background-color: #F27808;
+    /* Green */
+    border: none;
+    color: white;
+    padding: 13px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 8px;
+
+}
+
+button:hover {
+    color: #fff;
+    background: #FFA451;
+    border-color: #F27808;
+    transition: all 0.4s ease 0s;
+}
+
+#open_app {
+    display: none;
+    margin: auto;
+}
+
+#display_name {
+    display: block;
+
+}
+
+#welcome_txt{
+    color: #095933;
+    font-size: 1.5rem;
+}
+
+#u_name{
+    color: #F27808;
+    font-size: 1.5rem;
+}
+
+
+
+@media (pointer:coarse) and (hover:none) {
+    #background_img {
+
+        clip-path: ellipse(93% 100% at 56% -28%);
+        transform: translateY(-17%);
+
+    }
+
+    header {
+        background-color: #FFA451;
+        clip-path: ellipse(87% 88% at 56% -28%)
+    }
+
+
+}

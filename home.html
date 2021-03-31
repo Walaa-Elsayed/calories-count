@@ -1,0 +1,1308 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Calories Count</title>
+
+	<!-- CSS  Style -->
+	<link rel="stylesheet" href="css/style.css">
+
+	<link rel="stylesheet" href="themes/calories_count.min.css" />
+	<link rel="stylesheet" href="themes/jquery.mobile.icons.min.css" />
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile.structure-1.4.5.min.css" />
+	<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+	<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+
+
+
+
+</head>
+
+<body>
+
+	<!-- Popup Developer information -->
+	<div class="ui-popup ui-body-a" data-role="popup" id="popupAbout">
+		<!-- A close button: ui-icon-delete is a cross/X -->
+		<a href="#" data-rel="back"
+			class="ui-btn ui-corner-all ui-shadow ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
+		<p><strong>Developer:</strong> Walaa Elsayed</p>
+		<p><strong>Version:</strong> 1</p>
+		<p><strong>Release Date:</strong> February 2021</p>
+	</div>
+
+	<!-- Popup To display the total Calories -->
+	<div class="ui-popup ui-body-a" data-role="popup" id="popup_Caloris_Total">
+		<a href="#" data-rel="back"
+			class="ui-btn ui-corner-all ui-shadow ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
+
+
+		<div id="total_calories_display" style="width: 200px !important;">
+		    
+			<p> Total Calories: </p>
+			<p id="display_total_calories"></p>
+			
+			<button id="clear_value" class="ui-btn ui-btn-inline"> Clear All </button>
+			
+
+		</div>
+	</div>
+
+	<!-- Popup Contact Form -->
+	<div class="ui-popup ui-body-a ui-overlay-shadow" data-role="popup" id="dialogContact" data-theme="a"
+		data-dismissible="false">
+
+		<header data-role="header">
+			<h3>Get in touch</h3>
+			<a href="#" data-rel="back"
+				class="ui-btn ui-corner-all ui-shadow ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
+		</header>
+
+		<form style="padding: 10px 20px;">
+			<div class="ui-field-contain">
+				<label for="username">Name:</label>
+				<input type="text" name="username" id="username" value="" placeholder="Please enter your name."
+					required>
+			</div>
+
+			<div class="ui-field-contain">
+				<label for="email">Email:</label>
+				<input type="email" name="email" id="email" value="" placeholder="Please enter your email address."
+					required>
+			</div>
+
+			<div class="ui-field-contain">
+				<label for="msg">Message :</label>
+				<textarea name="msg" id="msg" required></textarea>
+			</div>
+
+			<div class="ui-field-contain">
+				<label for="newsletter">Tick this box to subscribe to our monthly newsletter.</label>
+				<input type="checkbox" name="newsletter" id="newsletter" value="no" data-mini="true">
+			</div>
+
+			<div class="ui-field-contain">
+				<input type="submit" name="submit" value="Send">
+			</div>
+		</form>
+	</div>
+
+
+	<!-- Header -->
+
+	<header data-role="header" data-tap-toggle="false">
+		<div id="header_content">
+
+			<a href="#home" class="ui-btn-left ui-btn ui-btn-inline ui-mini ui-corner-all ui-btn-icon-left ui-icon-back"
+				data-add-back-btn="true" data-rel="back">Back</a>
+
+			<img src="images/CaloriesCount_logo.svg" alt="image_logo" id="logo_img" />
+			<!-- <h1 id="header_title"> Calories Count </h1> -->
+
+		</div>
+
+	</header>
+
+	<!-- Footer -->
+	<footer data-role="footer" data-position="fixed" data-tap-toggle="false">
+		<div data-role="navbar">
+			<ul>
+				<li><a href="#popupAbout" data-icon="info" title="About Us" data-rel="popup">About Us</a></li>
+				<li><a href="#dialogContact" data-icon="mail" title="Contact Form" data-rel="popup">Contact </a></li>
+				<li><a href="#popup_Caloris_Total" data-icon="plus" title="Calories Count" data-rel="popup">Calories
+						Count</a></li>
+			</ul>
+		</div>
+	</footer>
+
+
+<!-- Home page Menu -->
+	<div data-role="page" data-theme="a" id="home">
+
+		<div data-role="content" class="content">
+
+			<a href="#info_calories" class="ui-btn ui-corner-all"> Information </a>
+			<a href="#food_section" class="ui-btn ui-corner-all"> Food Sections </a>
+			<a href="#select_calories_count" class="ui-btn ui-corner-all"> Calories Count </a>
+			<a href="#contact" class="ui-btn ui-corner-all"> Contact Form </a>
+			<a href="#help" class="ui-btn ui-corner-all"> Help </a>
+
+		</div>
+	</div>
+
+
+	<!--   Food sections Page   -->
+	<div data-role="page" id="food_section" data-theme="a">
+		<div data-role="content" class="content">
+
+			<a href="#fruit_items" class="ui-btn ui-corner-all"> Fruits </a>
+			<a href="#vegeSelect" class="ui-btn ui-corner-all"> Vegetables </a>
+			<a href="#meatSelect" class="ui-btn ui-corner-all"> Meat </a>
+			<a href="#breadSelect" class="ui-btn ui-corner-all"> Breads & Cerieal </a>
+
+
+		</div>
+	</div>
+
+	<!--  Fruit Select Page   -->
+	<div data-role="page" id="fruit_items" data-theme="a">
+		<div data-role="content" class="content" id="fruit_select_content">
+
+			<!-- Fruit Select Page -->
+
+
+			<div class="ui-grid-solo">
+				<div class="ui-block-a" id="fruit_title"> Fruit </div>
+			</div>
+
+
+
+			<div class="ui-grid-a">
+				<div class="ui-block-a"><a href="#apple"> <img src="images/apple_new.jpg" alt="apple img"
+							id="img1" /></a> </div>
+				<div class="ui-block-b"><a href="#orange"> <img src="images/orange_new.jpg" alt="orange img"
+							id="img2" /></a> </div>
+
+				<div class="ui-block-a"><a href="#grapes"> <img src="images/grapes.jpg" alt="sherry img" id="img3" />
+					</a></div>
+				<div class="ui-block-b"><a href="#pear"> <img src="images/pear2.jpg" alt="pear img" id="img4" /> </a>
+				</div>
+
+				<div class="ui-block-a"><a href="#mango"> <img src="images/mango2.jpg" alt="mango img" id="img5" /> </a>
+				</div>
+				<div class="ui-block-b"><a href="#strawberry"> <img src="images/strawberry.jpg" alt="strawberry img"
+							id="img6" /> </a></div>
+
+			</div>
+
+		</div>
+	</div>
+
+
+
+
+	<!--  Vegetable Select Page   -->
+	<div data-role="page" id="vegeSelect" data-theme="a">
+		<main data-role="content" id="vege_select_content">
+
+			<div class="ui-grid-solo">
+				<div class="ui-block-a" id="Vege_title"> Vegetable </div>
+			</div>
+
+
+
+			<div class="ui-grid-a">
+				<div class="ui-block-a"><a href="#tomato"> <img src="images/tomatos.jpg" alt="tomato img" id="img7" />
+					</a></div>
+				<div class="ui-block-b"><a href="#aubergine"> <img src="images/aubergine2.jpg" alt="aubergine img"
+							id="img8" /> </a></div>
+
+				<div class="ui-block-a"><a href="#avocado"> <img src="images/avocado.jpg" alt="avocado img" id="img9" />
+					</a></div>
+				<div class="ui-block-b"><a href="#pepper"> <img src="images/pepper.jpg" alt="pepper img" id="img10" />
+					</a></div>
+
+				<div class="ui-block-a"><a href="#carrot"> <img src="images/carrots.jpg" alt="carrots img" id="img11" />
+					</a></div>
+				<div class="ui-block-b"><a href="#cucumber"> <img src="images/cucumber.jpg" alt="cucumber img"
+							id="img12" /> </a></div>
+
+			</div>
+
+		</main>
+	</div>
+
+	<!--  Bread Select Page   -->
+	<div data-role="page" id="breadSelect" data-theme="a">
+		<div data-role="content" id="bread_select_content">
+
+			<div class="ui-grid-solo">
+				<div class="ui-block-a" id="bread_title"> Breads and Cereals </div>
+			</div>
+
+
+
+			<div class="ui-grid-a">
+				<div class="ui-block-a"><a href="#wholemeal_bread"><img
+							src="images/whole-wheat-bread-transparent-png.png" alt="bread img" id="img13" /> </a></div>
+
+				<div class="ui-block-b"><a href="#digestive_biscuits"><img src="images/hill-mini-pack-100-s.jpg"
+							alt="digestive_biscuit img" id="img14" /></a></div>
+
+				<div class="ui-block-a"><a href="#rice"><img src="images/rice.jpg" alt="rice img" id="img15" /></a></div>
+				<div class="ui-block-b"><a href="#white_bread"><img src="images/white_toast.jpg" alt="white toastimg"
+							id="img16" /></a></div>
+
+				<div class="ui-block-a"><a href="#potato"><img src="images/potatos.jpg" alt="potatos img"
+							id="img17" /></a></div>
+				<div class="ui-block-b"><a href="#spaghetti"><img src="images/spaghetti.jpg" alt="spagetti img"
+							id="img18" /></a></div>
+
+			</div>
+
+		</div>
+	</div>
+
+
+	<!--  Meat Select Page   -->
+	<div data-role="page" id="meatSelect" data-theme="a">
+		<div data-role="content" id="meat_select_content">
+
+			<div class="ui-grid-solo">
+				<div class="ui-block-a" id="meat_title"> Meat </div>
+			</div>
+
+
+
+			<div class="ui-grid-a">
+				<div class="ui-block-a"><a href="#chicken"><img src="images/chicken.jpg" alt="chicken img"
+							id="img19" /></a> </div>
+				<div class="ui-block-b"><a href="#codFish"><img src="images/fish.jpg" alt="fish img" id="img20" /></a>
+				</div>
+
+				<div class="ui-block-a"><a href="#beef"><img src="images/steak.jpg" alt="steak img" id="img21" /></a>
+				</div>
+				<div class="ui-block-b"><a href="#prawn"><img src="images/prawns.jpg" alt="prawns img" id="img22" /></a>
+				</div>
+
+				<div class="ui-block-a"><a href="#burger"><img src="images/burger.jpg" alt="burger img" id="img23" /></a>
+				</div>
+				<div class="ui-block-b"><a href="#lamb"><img src="images/lamb_img.jpg" alt="lamb img" id="img24" /></a>
+				</div>
+
+			</div>
+
+		</div>
+	</div>
+
+
+
+
+
+
+	<!--   Apple Page   -->
+	<div data-role="page" id="apple" data-theme="a">
+
+		<div data-role="content" class="content">
+
+			<div class="fruit_content">
+				<img src="images/apple_PNG2.png" class="content_img" alt="apple img" />
+				<h2> Apple </h2>
+				<!-- <div class="info"> -->
+				<b>Portion Size : </b> <span id="apple_cal">44</span> Calories <br>
+				<b>Per 100 Grams : </b> 44 Calories <br>
+				<b>Carbs : </b> 10.5 <br>
+				<b>Water Content : </b> 85% <br>
+				<b>Energy Content : </b> Low Calories <br>
+				<!-- </div> -->
+
+				<div>
+					<button id="add_apple" class="ui-input-btn ui-btn ui-btn-inline"> Add Apple </button>
+				</div>
+
+				<iframe src="https://www.youtube.com/embed/W_JOJNztrnI" 
+					allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+					allowfullscreen>
+				</iframe>
+			</div>
+
+		</div>
+
+
+	</div>
+
+	<!--   Orange Page   -->
+	<div data-role="page" id="orange" data-theme="a">
+
+		<div data-role="content" class="content">
+
+			<div class="fruit_content">
+				<img src="images/orangepng.png" class="content_img" alt="orange img" />
+				<h2> Orange </h2>
+				<p> <b>Portion Size : </b><span id="orange_cal"> 40 </span>Calories </p>
+				<p> <b>Per 100 Grams : </b> 30 Calories </p>
+				<p> <b>Carbs : </b> 8.5 </p>
+				<p> <b>Water Content : </b> 73% </p>
+				<p> <b>Energy Content : </b> Low Calories </p>
+
+				<div>
+					<button id="add_orange" class="ui-input-btn ui-btn ui-btn-inline"> Add Orange</button>
+				</div>
+
+				<iframe src="https://www.youtube.com/embed/P4zlsNorMHw" 
+					allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+					allowfullscreen></iframe>
+				
+			</div>
+
+		</div>
+
+	</div>
+
+	<!--   Grapes Page   -->
+	<div data-role="page" id="grapes" data-theme="a">
+
+		<div data-role="content">
+			<div class="fruit_content">
+				<img src="images/grapes-dimidwa-12.png" class="content_img" alt="grapes img"/>
+				<h2> Grapes </h2>
+				<p> <b>Portion Size : </b><span id="grapes_cal"> 55</span> Calories </p>
+				<p> <b>Per 100 Grams : </b> 62 Calories </p>
+				<p> <b>Carbs(grams) : </b> 0.9 </p>
+				<p> <b>Water Content : </b> 82% </p>
+				<p> <b>Energy Content : </b> Low Calories </p>
+
+				<div>
+					<button id="add_grapes" class="ui-input-btn ui-btn ui-btn-inline"> Add Grapes </button>
+				</div>
+
+				<iframe src="https://www.youtube.com/embed/MdNhYQ1t_pw" 
+					allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+					allowfullscreen></iframe>
+				
+			</div>
+
+		</div>
+	</div>
+
+	<!--   Pear Page   -->
+	<div data-role="page" id="pear" data-theme="a">
+
+		<div data-role="content">
+			<div class="fruit_content">
+				<img src="images/pear-png-28.png" class="content_img" alt="pear img"/>
+				<h2> Pear </h2>
+				<p> <b>Portion Size : </b><span id="pear_cal"> 45 </span> Calories </p>
+				<p> <b>Per 100 Grams : </b> 38 Calories </p>
+				<p> <b>Carbs : </b> 12 </p>
+				<p> <b>Water Content : </b> 77% </p>
+				<p> <b>Energy Content : </b> Low Calories </p>
+
+				<div>
+					<button id="add_pear" class="ui-input-btn ui-btn ui-btn-inline"> Add Pear </button>
+				</div>
+
+
+				<iframe src="https://www.youtube.com/embed/08MowpqeUHQ" 
+					allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+					allowfullscreen></iframe>
+			
+			</div>
+
+
+
+
+		</div>
+	</div>
+
+
+	<!--   Mango Page   -->
+	<div data-role="page" id="mango" data-theme="a">
+
+		<div data-role="content">
+			<div class="fruit_content">
+				<img src="images/mango_PNG9168.png" class="content_img" alt="mango img"/>
+				<h2> Mango </h2>
+				<p> <b>Portion Size : </b><span id="mango_cal"> 40 </span> Calories </p>
+				<p> <b>Carbs : </b> 9.5 </p>
+				<p> <b>Water Content : </b> 80% </p>
+				<p> <b>Energy Content : </b> Low Calories </p>
+
+				<div>
+					<button id="add_mango" class="ui-input-btn ui-btn ui-btn-inline"> Add mango </button>
+				</div>
+
+
+				<iframe src="https://www.youtube.com/embed/v3yac6V57o0" 
+					allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+					allowfullscreen></iframe>
+
+			</div>
+
+		</div>
+	</div>
+
+	<!--   Strawberry Page   -->
+	<div data-role="page" id="strawberry" data-theme="a">
+
+		<div data-role="content">
+			<div class="fruit_content">
+				<img src="images/strawberry_png.png" class="content_img" alt="strawberry img"/>
+				<h2> Strawberry </h2>
+				<p> <b>Portion Size : </b> <span id="strawberry_cal">10 </span> Calories </p>
+				<p> <b>Per 100 Grams : </b> 30 Calories </p>
+				<p> <b>Carbs(grams) : </b> 0.6 </p>
+				<p> <b>Water Content : </b> 90% </p>
+				<p> <b>Energy Content : </b> Low Calories </p>
+
+				<div>
+					<button id="add_strawberry" class="ui-input-btn ui-btn ui-btn-inline"> Add Strawberry </button>
+				</div>
+
+				<iframe src="https://www.youtube.com/embed/IT_U_vtLjc4" 
+					allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+					allowfullscreen></iframe>
+				
+			</div>
+
+		</div>
+	</div>
+
+
+	<!--   Aubergine Page   -->
+	<div data-role="page" id="aubergine" data-theme="a">
+
+		<div data-role="content">
+			<div class="fruit_content">
+				<img src="images/aubergine.png" class="content_img" alt="aubergine img"/>
+				<h2> Aubergine </h2>
+				<p> <b>Portion Size : </b><span id="aubergine_cal">25</span> Calories </p>
+				<p> <b>Per 100 Grams : </b> 25 Calories </p>
+				<p> <b>Carbs : </b> 6 </p>
+				<p> <b>Water Content : </b> 92% </p>
+				<p> <b>Energy Content : </b> Low Calories </p>
+
+				<div>
+					<button id="add_aubergine" class="ui-input-btn ui-btn ui-btn-inline"> Add Aubergine</button>
+				</div>
+
+				<iframe src="https://www.youtube.com/embed/gHNtDNqaRFU" 
+					allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+					allowfullscreen></iframe>
+			</div>
+
+		</div>
+	</div>
+
+
+
+
+
+	<!--   Tomato Page   -->
+	<div data-role="page" id="tomato" data-theme="a">
+
+		<div data-role="content">
+			<div class="fruit_content">
+				<img src="images/6-tomato-png-image.png" class="content_img" alt="tomato img"/>
+				<h2> Tomato </h2>
+				<p> <b>Portion Size : </b> <span id="tomato_cal">30</span> Calories </p>
+				<p> <b>Per 100 Grams : </b> 20 Calories </p>
+				<p> <b>Carbs(grams) : </b> 2.2 </p>
+				<p> <b>Water Content : </b> 93% </p>
+				<p> <b>Energy Content : </b> Low Calories </p>
+
+				<div>
+					<button id="add_tomato" class="ui-input-btn ui-btn ui-btn-inline">
+						Add Tomato </button>
+				</div>
+
+				<iframe src="https://www.youtube.com/embed/4nQOcQttmlo" 
+					allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+					allowfullscreen></iframe>
+			</div>
+
+		</div>
+	</div>
+
+	<!--   Carrot Page   -->
+	<div data-role="page" id="carrot" data-theme="a">
+
+		<div data-role="content">
+			<div class="fruit_content">
+				<img src="images/carrot_PNG4985.png" class="content_img" alt="carrot img" />
+				<h2> Carrot </h2>
+				<p> <b>Portion Size : </b> <span id="carrot_cal">16</span> Calories </p>
+				<p> <b>Per 100 Grams : </b> 25 Calories </p>
+				<p> <b>Carbs(grams) : </b> 10 </p>
+				<p> <b>Water Content : </b> 10% </p>
+				<p> <b>Energy Content : </b> Low Calories </p>
+
+				<div>
+					<button id="add_carrot" class="ui-input-btn ui-btn ui-btn-inline"> Add Carrot </button>
+				</div>
+
+				<iframe src="https://www.youtube.com/embed/Qk8Xo0y5ciI" 
+					allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+					allowfullscreen></iframe>
+			</div>
+
+		</div>
+	</div>
+
+	<!--   Cucumber Page   -->
+	<div data-role="page" id="cucumber" data-theme="a">
+
+		<div data-role="content">
+			<div class="fruit_content">
+				<img src="images/cucumber_PNG84281.png" class="content_img" alt="cucumber img"/>
+				<h2> Cucumber </h2>
+				<p> <b>Portion Size : </b><span id='cucumber_cal'> 3 </span> Calories </p>
+				<p> <b>Carbs(grams) : </b> 0 </p>
+				<p> <b>Water Content : </b> 96% </p>
+				<p> <b>Energy Content : </b> Low Calories </p>
+
+				<div>
+					<button id="add_cucumber" class="ui-input-btn ui-btn ui-btn-inline"> Add Cucumber
+					</button>
+				</div>
+
+				<iframe src="https://www.youtube.com/embed/nW78YV1JVEg" 
+					allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+					allowfullscreen></iframe>
+			</div>
+
+		</div>
+	</div>
+
+	<!--   Pepper Page   -->
+	<div data-role="page" id="pepper" data-theme="a">
+
+		<div data-role="content">
+			<div class="fruit_content">
+				<img src="images/pepper.png" class="content_img" alt="pepper img"/>
+				<h2> Pepper </h2>
+				<p> <b>Portion Size : </b> <span id="pepper_cal"> 6 </span> Calories </p>
+				<p> <b>Per 100 Grams : </b> 16 Calories </p>
+				<!-- <p> <b>Carbs(grams) : </b> 9 </p>
+					<p> <b>Water Content : </b> 72% </p> -->
+				<p> <b>Energy Content : </b> Very Low Calories </p>
+
+				<div>
+					<button id="add_pepper" class="ui-input-btn ui-btn ui-btn-inline">
+						Add Pepper </button>
+				</div>
+
+				<iframe src="https://www.youtube.com/embed/8NKYALo3O5g" 
+					allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+					allowfullscreen></iframe>
+			</div>
+
+		</div>
+	</div>
+
+	<!--   Avocado Page   -->
+	<div data-role="page" id="avocado" data-theme="a">
+
+		<div data-role="content">
+			<div class="fruit_content">
+				<img src="images/avocado.png" class="content_img" alt="avocado img"/>
+				<h2> Avocado </h2>
+				<p> <b>Portion Size : </b><span id="avocado_cal"> 150 </span>Calories </p>
+				<p> <b>Carbs(grams) : </b> 2 </p>
+				<p> <b>Water Content : </b> 60% </p>
+				<p> <b>Energy Content : </b> Low Calories </p>
+
+				<div>
+					<button id="add_avocado" class="ui-input-btn ui-btn ui-btn-inline">
+						Add Avocado Calories</button>
+				</div>
+
+				<iframe src="https://www.youtube.com/embed/2Cfl-aVbbz0" 
+					allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+					allowfullscreen></iframe>
+			</div>
+
+		</div>
+	</div>
+
+	<!--   Wholemeal Page   -->
+	<div data-role="page" id="wholemeal_bread" data-theme="a">
+
+		<div data-role="content">
+			<div class="fruit_content">
+				<img src="images/whole-wheat-bread-transparent-png.png" class="content_img" alt="wholemeal bread img"/>
+				<h2> Wholemeal bread </h2>
+				<!-- <div class="info"> -->
+				<b>One Slice 40g : </b> <span id="wholemeal_bread_cal"> 88 </span> Calories <br>
+				<b>Per 100 Grams : </b> 220 Calories <br>
+				<b>Carbs 100g : </b> 41g <br>
+				<!-- <b>Water Content : </b> 85% </br> -->
+				<b>Energy Content : </b> Low Calories <br>
+				<!-- </div> -->
+				<br>
+
+				<div>
+					<button id="add_wholemeal_bread" class="ui-input-btn ui-btn ui-btn-inline">
+						Add wholemeal Bread Calories</button>
+				</div>
+
+				<iframe src="https://www.youtube.com/embed/7aJTauKCH7Y"
+					allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+					allowfullscreen></iframe>
+			</div>
+
+		</div>
+	</div>
+
+
+	<!--   White Bread Page   -->
+	<div data-role="page" id="white_bread" data-theme="a">
+
+		<div data-role="content">
+			<div class="fruit_content">
+				<img src="images/whitebread.png" class="content_img" alt="white bread img"/>
+				<h2> White bread </h2>
+				<!-- <div class="info"> -->
+				<b>One Slice 40g : </b> <span id="white_bread_cal">96</span> Calories <br>
+				<b>Per 100 Grams : </b> 240 Calories <br>
+				<b>Carbs 100g : </b> 49g <br>
+				<!-- <b>Water Content : </b> 85% </br> -->
+				<b>Energy Content : </b> Medium Calories <br>
+				<!-- </div> -->
+
+				<br>
+				<div>
+					<button id="add_white_bread" class="ui-input-btn ui-btn ui-btn-inline">
+						Add White Bread Calories</button>
+				</div>
+
+				<iframe src="https://www.youtube.com/embed/sGkodiznoB4" 
+					allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+					allowfullscreen></iframe>
+			</div>
+
+		</div>
+	</div>
+
+
+	<!--   Spaghetti Page   -->
+	<div data-role="page" id="spaghetti" data-theme="a">
+
+		<div data-role="content">
+			<div class="fruit_content">
+				<img src="images/spaghetti_png.png" class="content_img" alt="spagetti img"/>
+				<h2> Spaghetti (Boiled) </h2>
+				<!-- <div class="info"> -->
+				<b> 300 Grams : </b> <span id="spaghetti_cal"> 303 </span> Calories <br>
+				<b>Per 100 Grams : </b> 101 Calories <br>
+				<b>Carbs : </b> 31 per 100 grams <br>
+				<b>Energy Content : </b> Low Calories <br>
+				<!-- </div> -->
+
+				<br>
+				<div>
+					<button id="add_spaghetti" class="ui-input-btn ui-btn ui-btn-inline"> Add Spaghetti
+						Calories</button>
+				</div>
+
+				<iframe src="https://www.youtube.com/embed/WwasJCB4FaA" 
+					allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+					allowfullscreen></iframe>
+
+
+			</div>
+
+		</div>
+	</div>
+
+	<!--   Digestive biscuit Page   -->
+	<div data-role="page" id="digestive_biscuits" data-theme="a">
+
+		<div data-role="content">
+			<div class="fruit_content">
+				<img src="images/biscuits.png" class="content_img" alt="digestive biscuit img"/>
+				<h2> Digestive Biscuit</h2>
+				<!-- <div class="info"> -->
+				<b>One Biscuit : </b> <span id="digestive_biscuit_cal">86 </span>Calories <br>
+				<b>Per 100 Grams : </b> 480 Calories <br>
+				<b>Energy Content : </b> High Calories <br>
+				<!-- </div> -->
+
+				<br>
+				<div>
+					<button id="add_digestive_biscuit" class="ui-input-btn ui-btn ui-btn-inline"> Add digestive
+						biscuits</button>
+				</div>
+
+				<iframe src="https://www.youtube.com/embed/aqrNtzM_Q94" 
+					allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+					allowfullscreen></iframe>
+			</div>
+
+		</div>
+	</div>
+
+
+
+	<!--   Rice Page   -->
+	<div data-role="page" id="rice" data-theme="a">
+
+		<div data-role="content">
+			<div class="fruit_content">
+				<img src="images/121-1214639_bowl-of-white-rice-transparent-bowl-of-rice.png" class="content_img" alt="rice img"/>
+				<h2> White Boiled Rice </h2>
+				<!-- <div class="info"> -->
+				<b> 300 Grams : </b><span id="rice_cal"> 420 </span> Calories <br>
+				<b>Per 100 Grams : </b> 140 Calories <br>
+				<b>Carbs : </b> 28 per 100 grams <br>
+				<b>Energy Content : </b> Low Calories <br>
+				<!-- </div> -->
+
+				<br>
+				<div>
+					<button id="add_rice" class="ui-input-btn ui-btn ui-btn-inline"> Add Rice </button>
+				</div>
+				<iframe src="https://www.youtube.com/embed/cyRL3BFbVrI" 
+					allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+					allowfullscreen></iframe>
+			</div>
+
+		</div>
+	</div>
+
+
+
+	<!--   Potato Page   -->
+	<div data-role="page" id="potato" data-theme="a">
+
+		<div data-role="content">
+			<div class="fruit_content">
+				<img src="images/potatoes.jpg" class="content_img" alt="potato img" />
+				<h2> Boiled Potatoes </h2>
+				<!-- <div class="info"> -->
+				<b> 300 Grams : </b> <span id="potato_cal"> 210</span> Calories <br>
+				<b>Per 100 Grams : </b> 70 Calories <br>
+				<b>Carbs : </b> 20.4 per 120 grams <br>
+				<b>Energy Content : </b> Low Calories <br>
+				<!-- </div> -->
+
+				<h2> Roasted Potatoes </h2>
+
+				<b> 300 Grams : </b> 420 Calories <br>
+				<b>Per 100 Grams : </b> 140 Calories <br>
+				<b>Energy Content : </b> Medium Calories <br>
+
+
+				<br>
+				<div>
+					<button id="add_potato" class="ui-input-btn ui-btn ui-btn-inline"> Add Potato </button>
+				</div>
+				<iframe src="https://www.youtube.com/embed/ym0mmubnHfs" 
+					allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+					allowfullscreen></iframe>
+			</div>
+
+		</div>
+	</div>
+
+
+	<!--   Chicken Page   -->
+	<div data-role="page" id="chicken" data-theme="a">
+
+		<div data-role="content">
+			<div class="fruit_content">
+				<img src="images/roast_chicken.png" class="content_img" alt="chicken img"/>
+				<h2> Roast Chicken </h2>
+				<!-- <div class="info"> -->
+				<b>Portion Size : </b><span id="chicken_cal"> 220 </span> Calories <br>
+				<b>Per 100 Grams : </b> 200 Calories <br>
+				<b>Carbs : </b> 0 <br>
+				<b>Energy Content : </b> Medium Calories <br>
+				<!-- </div> -->
+
+				<br>
+
+				<div>
+					<button id="add_chicken" class="ui-input-btn ui-btn ui-btn-inline"> Add chicken </button>
+				</div>
+
+				<iframe src="https://www.youtube.com/embed/6NKBuxIDXXw"
+					allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+					allowfullscreen></iframe>
+				
+			</div>
+
+		</div>
+	</div>
+
+
+	<!--   Beef Page   -->
+	<div data-role="page" id="beef" data-theme="a">
+
+		<div data-role="content">
+			<div class="fruit_content">
+				<img src="images/roast_beef.png" class="content_img" alt="beef img"/>
+				<h2> Roast Beaf </h2>
+				<!-- <div class="info"> -->
+				<b>Portion Size : </b><span id="beef_cal"> 320</span> Calories <br>
+				<b>Per 100 Grams : </b> 280 Calories <br>
+				<b>Carbs : </b> 0 <br>
+				<b>Energy Content : </b> Medium Calories <br>
+				<!-- </div> -->
+
+				<br>
+				<div>
+					<button id="add_beef" class="ui-input-btn ui-btn ui-btn-inline"> Add slice of beef </button>
+				</div>
+
+				<iframe src="https://www.youtube.com/embed/va9vGsay-1E"
+					allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+					allowfullscreen></iframe>
+			</div>
+
+		</div>
+	</div>
+
+
+	<!--   burger Page   -->
+	<div data-role="page" id="burger" data-theme="a">
+
+		<div data-role="content">
+			<div class="fruit_content">
+				<img src="images/burger_png.png" class="content_img" alt="burger img"/>
+				<h2> Beef Burger Frozen </h2>
+				<!-- <div class="info"> -->
+				<b>Portion Size : </b> <span id="burger_cal"> 320 </span> Calories <br>
+				<b>Per 100 Grams : </b> 280 Calories <br>
+				<b>Carbs in 100 Grams: </b> 24 g <br>
+				<b>Energy Content : </b> Medium - High Calories <br>
+				<!-- </div> -->
+
+				<br>
+				<div>
+					<button id="add_burger" class="ui-input-btn ui-btn ui-btn-inline"> Add Burger </button>
+				</div>
+				<iframe src="https://www.youtube.com/embed/VdcnnY7SSo4" 
+					allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+					allowfullscreen></iframe>
+			</div>
+
+		</div>
+	</div>
+
+
+	<!--   Prawn Page   -->
+	<div data-role="page" id="prawn" data-theme="a">
+
+		<div data-role="content">
+			<div class="fruit_content">
+				<img src="images/prawns_img.jpg" class="content_img" alt="prawn img"/>
+				<h2> Prawns </h2>
+				<!-- <div class="info"> -->
+				<b>Portion Size : </b> <span id="prawn_cal"> 180</span> Calories <br>
+				<b>Per 100 Grams : </b> 100 Calories <br>
+				<b>Carbs : </b> 18.0% <br>
+				<b>Energy Content : </b> Low - Medium Calories <br>
+				<!-- </div> -->
+				<br>
+				<div>
+					<button id="add_prawn" class="ui-input-btn ui-btn ui-btn-inline"> Add Prawn </button>
+				</div>
+				<iframe src="https://www.youtube.com/embed/TJ1HeNizHW4" 
+					allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+					allowfullscreen></iframe>
+			</div>
+
+		</div>
+	</div>
+
+
+
+	<!--  Lamb Page   -->
+	<div data-role="page" id="lamb" data-theme="a">
+
+		<div data-role="content">
+			<div class="fruit_content">
+				<img src="images/lamb_roast.png" class="content_img" alt="roast lamb img"/>
+				<h2> Roast Lamb </h2>
+				<!-- <div class="info"> -->
+				<b>Portion Size : </b><span id="lamb_cal"> 300 </span> Calories <br>
+				<b>Per 100 Grams : </b> 300 Calories <br>
+				<b>Carbs in 100 Grams: </b> 0 g <br>
+				<b>Energy Content : </b> Medium - High Calories <br>
+				<!-- </div> -->
+				<br>
+				<div>
+					<button id="add_lamb" class="ui-input-btn ui-btn ui-btn-inline"> Add roast lamb </button>
+				</div>
+				<iframe src="https://www.youtube.com/embed/OAn2LsT-2oM" 
+					allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+					allowfullscreen></iframe>
+			</div>
+
+		</div>
+	</div>
+
+
+	<!--   Cod Fish Page   -->
+	<div data-role="page" id="codFish" data-theme="a">
+
+		<div data-role="content">
+			<div class="fruit_content">
+				<img src="images/cod_fresh_fish.jpg" class="content_img" alt="cod fish img"/>
+				<h2> Cod Fish </h2>
+				<!-- <div class="info"> -->
+				<b>Portion Size : </b> <span id="codFish_cal"> 150 </span> Calories <br>
+				<b>Per 100 Grams : </b> 100 Calories <br>
+				<b>Carbs : </b> 0 <br>
+				<b>Energy Content : </b> Low Calories <br>
+				<!-- </div> -->
+
+				<br>
+				<div>
+					<button id="add_codFish" class="ui-input-btn ui-btn ui-btn-inline"> Add Cod Fish </button>
+				</div>
+
+				<iframe src="https://www.youtube.com/embed/4folx0ORjoE" 
+					allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+					allowfullscreen></iframe>
+			</div>
+
+		</div>
+	</div>
+
+
+
+	<!--  Contact Page   -->
+	<div data-role="page" id="contact" data-theme="a">
+
+
+		<div data-role="content">
+			<div id="contact_form">
+
+				<label for="first_name">First Name:</label>
+				<input type="text" name="first_name" id="first_name" placeholder="Enter your first name">
+
+				<label for="last_name">Last Name:</label>
+				<input type="text" name="last_name" id="last_name" placeholder=" Enter your last name">
+
+				<label for="mail">Email:</label>
+				<input type="email" name="email" id="mail" placeholder="Enter your email">
+
+
+				<fieldset data-role="controlgroup">
+					<legend>Gender:</legend>
+					<input type="radio" name="gender" id="female" value="Female" checked="checked">
+					<label for="female">Female</label>
+					<input type="radio" name="gender" id="male" value="male">
+					<label for="male">Male</label>
+
+				</fieldset>
+
+				<label for="message">Message:</label>
+				<textarea cols="40" rows="8" name="message" id="message"> </textarea>
+
+
+				<button class="ui-shadow ui-btn ui-corner-all">Submit</button>
+
+			</div>
+		</div>
+	</div>
+
+	<!--  Information Page   -->
+	<div data-role="page" id="info_calories" data-theme="a">
+
+
+		<div data-role="content">
+			<div class="info_content">
+
+
+				<h1>Understanding calories</h1>
+				<p>The amount of energy in an item of food or drink is measured in calories.
+					When we eat and drink more calories than we use up, our bodies store the excess as body fat. If this
+					continues over time we may put on weight.</p>
+				<p>As a guide, an average man needs around 2,500kcal (10,500kJ) a day to maintain a healthy body weight.
+				</p>
+				<p>For an average woman, that figure is around 2,000kcal (8,400kJ) a day.
+					These values can vary depending on age, size and levels of physical activity, among other factors.
+				</p>
+				<h2>Calories and energy balance</h2>
+				<p>
+					Our bodies need energy to keep us alive and our organs functioning normally. When we eat and drink,
+					we put energy into our bodies.
+					Our bodies use up that energy through everyday movement, which includes everything from breathing to
+					running.
+				</p>
+				<p>To maintain a stable weight, the energy we put into our bodies must be the same as the energy we use
+					by normal bodily functions and physical activity.
+					An important part of a healthy diet is balancing the energy you put into your bodies with the energy
+					you use.</p>
+				<p>For example, the more physical activity we do the more energy we use.
+					If you consume too much energy on one day, don't worry; just try to take in less energy on the
+					following days. </p>
+				<h2>
+					Checking calories in food</h2>
+				<p>
+					Knowing the calorie content of food and drink can help ensure you're not consuming too much.</p>
+				<p>The calorie content of many shop-bought foods is stated on the packaging as part of the nutrition
+					label.</p>
+				<p>This information will appear under the &quot;Energy&quot; heading. The calorie content is often given
+					in kcals, which is short for &quot;kilocalories&quot;, and also in kJ, which is short for
+					&quot;kilojoules&quot;.
+					A &quot;kilocalorie&quot; is another word for what is commonly called a &quot;calorie&quot;, so
+					1,000 calories will be written as 1,000kcals.</p>
+				<p>Kilojoules are the metric measurement of calories. To find the energy content in kilojoules, multiply
+					the calorie figure by 4.2.</p>
+				<p>The label will usually tell you how many calories are contained in 100 grams or 100 millilitres of
+					the food or drink, so you can compare the calorie content of different products.</p>
+				<p>Many labels will also state the number of calories in &quot;one portion&quot; of the food. But
+					remember that the manufacturer's idea of &quot;one portion&quot; may not be the same as yours, so
+					there could be more calories in the portion you serve yourself.</p>
+				<p>You can use the calorie information to assess how a particular food fits into your daily calorie
+					intake. </p>
+
+				<h2>Calorie counters</h2>
+				<p>
+					There is a wide range of online calorie counters for computers and mobile phones. Many of these can
+					be downloaded and used for free.</p>
+				<p>NHS Choices can't verify their data but they can be helpful to track your calories by recording all
+					of the food you eat in a day.</p>
+				<p>Some restaurants put calorie information on their menus, so you can also check the calorie content of
+					foods when eating out. Calories should be given per portion or per meal.</p>
+				<h2>Burning calories</h2>
+				<p>
+					The amount of calories people use by doing a certain physical activity varies, depending on a range
+					of factors, including size and age.</p>
+				<p>The more vigorously you do an activity, the more calories you will use. For example, fast walking
+					will burn more calories than walking at a moderate pace.</p>
+				<p>If you're gaining weight, it could mean you've been regularly eating and drinking more calories than
+					you've been using.</p>
+				<p>To lose weight, you need to use more energy than you consume, and continue this over a period of
+					time.
+				</p>
+
+				<p> <b>Useful link : </b> <a
+						href="https://www.nhs.uk/live-well/healthy-weight/start-the-nhs-weight-loss-plan/"> Start the
+						NHS weight loss plan </a></p>
+
+
+			</div>
+		</div>
+	</div>
+
+
+
+	<!-- Count calories of multiple items   -->
+	<div data-role="page" id="select_calories_count" data-theme="a">
+		<div data-role="content" id="select_fruit_content">
+			<form>
+				<input id="filterTable-input" data-type="search">
+			</form>
+
+			<table data-role="table" data-mode="columntoggle" class="ui-body-d ui-shadow table-stripe ui-responsive"
+				data-column-btn-theme="b" data-column-btn-text="Columns to display..." data-column-popup-theme="a"
+				data-input="#filterTable-input" data-filter="true">
+				<thead>
+					<tr>
+						<th data-priority="2">No</th>
+						<th data-priority="1">Calories in Portion Size</th>
+						<th data-priority="3"> Fruit item</th>
+						<th><abbr title="Add Button"> Add</abbr></th>
+						<th><abbr title="remove Button"> Delete </abbr></th>
+
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<th>1</th>
+						<td>44 Calories </td>
+						<td>Apple </td>
+						<td>
+							<button
+								class="ui-btn ui-shadow ui-corner-all ui-icon-plus ui-btn-icon-notext ui-btn-b ui-btn-inline"
+								id="apple_add_btn"></button> </td>
+						<td> <button
+								class="ui-btn ui-shadow ui-corner-all ui-icon-minus ui-btn-icon-notext ui-btn-b ui-btn-inline"
+								id="apple_delete_btn"></button></td>
+
+					</tr>
+					<tr>
+						<th>2</th>
+						<td>40 Calories </td>
+						<td> Orange </td>
+						<td><button
+								class="ui-btn ui-shadow ui-corner-all ui-icon-plus ui-btn-icon-notext ui-btn-b ui-btn-inline"
+								id="orange_add_btn"></button> </td>
+
+						<td> <button
+								class="ui-btn ui-shadow ui-corner-all ui-icon-minus ui-btn-icon-notext ui-btn-b ui-btn-inline"
+								id="orange_delete_btn"></button></td>
+
+
+					</tr>
+					<tr>
+						<th>3</th>
+						<td>107 Calories </td>
+						<td>Banana</td>
+						<td><button
+								class="ui-btn ui-shadow ui-corner-all ui-icon-plus ui-btn-icon-notext ui-btn-b ui-btn-inline"
+								id="banana_add_btn"></button> </td>
+						<td> <button
+								class="ui-btn ui-shadow ui-corner-all ui-icon-minus ui-btn-icon-notext ui-btn-b ui-btn-inline"
+								id="banana_delete_btn"></button></td>
+
+
+					</tr>
+					<tr>
+						<th>4</th>
+						<td>40 Calories </td>
+						<td>Mango </td>
+						<td><button
+								class="ui-btn ui-shadow ui-corner-all ui-icon-plus ui-btn-icon-notext ui-btn-b ui-btn-inline"
+								id="mango_add_btn"></button> </td>
+						<td> <button
+								class="ui-btn ui-shadow ui-corner-all ui-icon-minus ui-btn-icon-notext ui-btn-b ui-btn-inline"
+								id="mango_delete_btn"></button></td>
+
+
+					</tr>
+					<tr>
+						<th>5</th>
+						<td>2.5 Calories </td>
+						<td>Strawberry </td>
+						<td><button
+								class="ui-btn ui-shadow ui-corner-all ui-icon-plus ui-btn-icon-notext ui-btn-b ui-btn-inline"
+								id="strawberry_add_btn"></button> </td>
+						<td> <button
+								class="ui-btn ui-shadow ui-corner-all ui-icon-minus ui-btn-icon-notext ui-btn-b ui-btn-inline"
+								id="strawberry_delete_btn"></button></td>
+					</tr>
+					<tr>
+						<th>6</th>
+						<td>45 Calories </td>
+						<td>Pear </td>
+						<td><button
+								class="ui-btn ui-shadow ui-corner-all ui-icon-plus ui-btn-icon-notext ui-btn-b ui-btn-inline"
+								id="Pear_add_btn"></button> </td>
+						<td> <button
+								class="ui-btn ui-shadow ui-corner-all ui-icon-minus ui-btn-icon-notext ui-btn-b ui-btn-inline"
+								id="Pear_delete_btn"></button></td>
+
+
+					</tr>
+
+					<tr>
+						<th>7</th>
+						<td>30 Calories </td>
+						<td>Tomato </td>
+						<td>
+							<button
+								class="ui-btn ui-shadow ui-corner-all ui-icon-plus ui-btn-icon-notext ui-btn-b ui-btn-inline"
+								id="tomato_add_btn"></button> </td>
+						<td> <button
+								class="ui-btn ui-shadow ui-corner-all ui-icon-minus ui-btn-icon-notext ui-btn-b ui-btn-inline"
+								id="tomato_delete_btn"></button></td>
+
+					</tr>
+
+					<tr>
+						<th>8</th>
+						<td>40 Calories </td>
+						<td> Aubergine </td>
+						<td><button
+								class="ui-btn ui-shadow ui-corner-all ui-icon-plus ui-btn-icon-notext ui-btn-b ui-btn-inline"
+								id="aubergine_add_btn"></button> </td>
+
+						<td> <button
+								class="ui-btn ui-shadow ui-corner-all ui-icon-minus ui-btn-icon-notext ui-btn-b ui-btn-inline"
+								id="aubergine_delete_btn"></button></td>
+
+
+					</tr>
+
+				</tbody>
+			</table>
+
+			<div id="result">
+				<p id="demo1"></p>
+				<p id="demo2"></p>
+			</div>
+
+
+
+
+		</div>
+
+
+
+	</div>
+
+
+
+	<!-- Help Page -->
+
+	<div data-role="page" id="help" data-theme="a">
+
+
+		<div data-role="content">
+			<div class ="info_content">
+				<h1>Calories Count App </h1>
+				Our application aims to help the user to find more information about each selected food item and enables the
+				user to count the total calories for selected food items.
+
+				<h3>How to find more information about food item?</h3>
+				<ol>
+					<li> From the welcome page you enter to the application’s menu. </li>
+					<li> If you need general information, click on the information button from the application’s menu. </li>
+					<li> If you need more information about each food item, click on food section button from the
+						application’s menu,
+						then choose which food category and then choose which food item you need to know more
+						information about it.</li>
+				</ol>
+
+
+
+
+				<h3>How to use the application to calculate the calories? </h3>
+				<p>In our application you can find two ways to calculate the calories: </p>
+
+				<ul>
+					<li> Firstly, from the application menu choose food selection and then which food category you need
+						and then food item.
+						In each food item, there are add button you can click on it to add the food item calories and
+						then click on calories count
+						on footer to show the total calories.</li>
+					<li> Secondly, from the application menu you can choose calories count, then you can find the food
+						items, select one or more food type and you can find the total calories value in the same page
+						or in the calories count in the footer section.</li>
+				</ul>
+
+
+
+				<h3> How to clear all the calories count value? </h3>
+				<ul>
+					<li>From the calories count section in the footer,
+						there are “Clear All” button, you can click on it to clear all the values.
+					</li>
+				</ul>
+
+				<h3> How to communicate with us and ask about more information? </h3>
+				<ul>
+					<li>
+
+						You can use the contact form in the application menu or contact section in the footer to send us
+						your message with any questions do you need.
+					</li>
+				</ul>
+
+				<h3>We are happy to receive any feedback about our application.</h3>
+
+			</div>
+		</div>
+	</div>
+
+
+
+ <!-- Script code for display the header, footer and popup -->
+
+	<script>
+		$(function () {
+			$("[data-role='header']").toolbar();
+			$("[data-role='footer']").toolbar();
+
+			$("#popupAbout").enhanceWithin().popup();
+			$("#popup_Caloris_Total").enhanceWithin().popup();
+			$("#dialogContact").enhanceWithin().popup();
+
+		});
+	</script>
+
+<!-- Script file javascript code -->
+	<script src="js/calculate_total_calories.js"></script>
+
+
+
+</body>
+
+</html>

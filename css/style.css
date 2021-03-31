@@ -1,0 +1,340 @@
+/* Font Styles*/
+
+@import url('https://fonts.googleapis.com/css2?family=Rosario:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
+
+
+
+body {
+    height: 100vh;
+    background-color: #ffffff !important;
+}
+
+
+
+/* HEADER STYLE */
+
+
+
+header{
+    text-align: center;
+    background-color: #FFA451;
+    border: #FFA451;
+    color: rgb(255, 255, 255);
+    height: 6rem !important;
+}
+
+
+#header_title{
+    display: inline; 
+   
+}
+
+
+
+#logo_image{
+    display: inline;
+  
+   
+   
+}
+
+#logo_img{
+    display: inline;
+    max-width:18rem;
+    height: auto;
+    max-height: 6rem;
+    width: 100%;
+  
+    
+
+}
+
+h1{
+    font-family: 'Rosario', sans-serif;
+    color: #095933 !important;
+    
+
+}
+
+h2{
+    text-align: center !important;
+    color: #095933 !important;
+}
+
+h3{
+    
+    color: #0c5130 !important;
+}
+
+
+/* Content index page style */
+.content{
+padding-top: 4rem;
+height: 100vh ;
+}
+
+
+.ui-btn {
+    
+font-size: 1.1rem !important;
+    
+} 
+
+.ui-page-theme-a .ui-btn{
+
+    font-size: 1 rem !important;
+    letter-spacing: .1rem !important;
+    font-family: 'Roboto', sans-serif !important;
+}
+
+/* Content Food Selection Page */
+#food_selection_content{
+    padding-top: 4rem;
+    }
+
+/* Fruit Selection Page*/
+
+#fruit_title{
+    font-size: 150% !important;
+    color: #095933 !important;
+    font-family: 'Rosario', sans-serif;
+}
+
+.ui-grid-solo{
+    text-align: center !important;
+}
+
+.ui-grid-a{
+    text-align: center !important;
+    margin: 1rem;  
+}
+
+
+#img1, #img2 , #img3, #img4 , #img5, #img6 ,
+#img7, #img8 , #img9, #img10 , #img11, #img12,
+#img13, #img14 , #img15, #img16 , #img17, #img18,
+#img19, #img20 , #img21, #img22 , #img23, #img24
+{
+    width: 90%;
+    max-width: 400px;
+    max-height: 150px;
+    height: auto;
+    border: 1px solid #FFA451;
+    border-radius: 25px;
+    margin-top: .5rem;
+    
+   
+}
+
+.fruit_content{
+    text-align: center !important;
+    
+}
+
+iframe{
+    margin-top: 1.5rem;
+    width: 90%;
+    max-width: 400px;
+    height: auto;
+    border-radius:2% ;
+    border: none;
+    box-shadow:
+    inset 0 -3em 3em rgba(0,0,0,0.1),
+          0 0  0 2px rgb(255,255,255),
+          0.3em 0.3em 1em rgba(0,0,0,0.3);
+    
+}
+
+
+.content_img{
+    margin: auto;
+    width: 150px;
+    height: 100px;
+}
+
+.info { 
+     color: #0c5130  !important;
+        }
+
+/* vegetable Selection Page*/
+
+#Vege_title{
+    font-size: 150% !important;
+    color: #095933 !important;
+    font-family: 'Rosario', sans-serif;
+}
+
+/* Meat Selection Page*/
+
+#meat_title{
+    font-size: 150% !important;
+    color: #095933 !important;
+    font-family: 'Rosario', sans-serif;
+}
+
+/* Bread Selection Page*/
+
+#bread_title{
+    font-size: 150% !important;
+    color: #095933 !important;
+    font-family: 'Rosario', sans-serif;
+}
+
+
+/*  CONTACT FORM STYLE */
+label , legend{
+    color: #095933 !important;
+}
+
+fieldset label{
+    color: #ffffff !important;
+}
+
+input{
+    color: dimgrey !important;
+}
+
+#contact_form{
+    width: 70%;
+    margin: auto;
+}
+
+.ui-controlgroup-vertical .ui-controlgroup-controls .ui-btn{
+    background-color: #FFF3E7;
+    width: 25%;
+    font-size: 90% !important;
+}
+
+/* Information Page */
+.info_content{
+    width: 70%;
+    margin: auto;
+  
+}
+
+
+
+
+/* Calories Count Fruit Page */
+checkbox {
+    background-color: #DAD9D8 !important;
+}
+
+.ui-collapsible-heading .ui-btn{
+    background-color: #DAD9D8;
+    color: #095933;
+    font-weight: bolder;
+    font-size: 1 rem !important;
+}
+
+
+.ui-checkbox .ui-btn, .ui-radio .ui-btn{
+    background-color: #9edbbe;
+    color: #06351f !important;
+    text-shadow: 0ch;
+}  
+
+.ui-input-btn input{
+    background-color: #0c8d51;
+}
+
+#submit_form{
+    background-color: #0c8d51 !important;
+}
+
+#select_fruit_content , #select_vege_content{
+    width: 80%;
+    margin: auto;
+    text-align: center !important;
+}
+
+div#content1 {
+    padding-left: 3rem !important ;
+    background-color: #FFF3E7;
+    border: #FFA451;
+    color: #06351f;
+    text-align: justify !important;
+    margin: auto;
+   
+
+}
+
+
+div.item1 , div.cal1, div.item_button1{
+    display: inline-block !important;
+    
+    padding-left: 2rem;
+    font-size: 1.2rem;
+}
+
+
+
+
+div #result{
+
+    display: block;
+    border: 5px dashed #FFA451;
+    box-shadow: 5px 10px #888888;
+}
+
+#total_calories_display{
+    text-align: center;
+    margin: 2%;
+}
+
+
+ .ui-footer {
+    color: #053b22 !important;
+    text-shadow: 0ch !important;
+    font-weight: bolder !important;
+    
+    background-color: #DAD9D8;
+    border-style: solid;
+    
+    border-color: #FFA451;
+    border-width: .1rem;
+     
+  }
+
+
+   /* unvisited link */
+   .ui-footer a:link , .ui-header a:link {
+    color:#095933 !important;
+  }
+  
+  /* visited link */
+  .ui-footer a:visited , .ui-header a:visited {
+    color:#053b22 !important;
+  }
+  
+  /* mouse over link */
+  .ui-footer a:hover ,.ui-header a:hover  {
+    color: #ffffff !important;
+  }
+  
+  /* selected link */
+  .ui-footer a:active ,  .ui-header a:active {
+    color:#0c5130 !important;
+  } 
+
+
+
+  
+
+  @media (pointer:coarse) and (hover:none) {
+
+    header{
+        height: 8rem !important;
+    }
+
+    #logo_img{ 
+        max-height: 6rem;
+        padding-top: 31px !important;
+    }
+    
+    .ui-footer a:link , .ui-header a:link {
+        font-size: .7rem !important;
+      }
+
+}
